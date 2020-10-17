@@ -64,5 +64,9 @@
     chainFunction(room, 'onPlayerActivity', (player) => {
       resetPlayerTimeout(player.id)
     })
+
+    chainFunction(room, 'onPlayerLeave', (player) => {
+      clearPlayerTimeout(player.id)
+    })
   })
 })()

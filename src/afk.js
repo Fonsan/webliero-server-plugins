@@ -1,4 +1,5 @@
 (function () {
+  //
   const chainFunction = (object, attribute, func) => {
     const original = object[attribute]
     if (original) {
@@ -16,8 +17,8 @@
       throw 'afk already loaded'
     }
     const settings = {
-      timeout: 3000,
-      graceTime: 1000
+      timeout: 30000,
+      graceTime: 5000
     }
     room.AFK_PLUGIN = true
     chainFunction(room, 'onPlayerJoin', (player) => {

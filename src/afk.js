@@ -1,5 +1,13 @@
 (function () {
   // AFK detection by https://github.com/Fonsan/webliero-server-plugins/
+  // Advanced Usage:
+  // in your server script
+  // room.afkConfig = {
+  //   spectatorTeam: 0, // Future use
+  //   timeout: 30000, // The afk timeout
+  //   graceTime: 5000, // the grace period before being kicked
+  //   hotTimeout: 3000, // performance related
+  // }
   const chainFunction = (object, attribute, func) => {
     const original = object[attribute]
     if (original) {

@@ -2,7 +2,7 @@
   // AFK detection by https://github.com/Fonsan/webliero-server-plugins/
   // Advanced Usage:
   // in your server script
-  // room.afkConfig = {
+  // room.AFKConfig = {
   //   spectatorTeam: 0, // Future use
   //   timeout: 30000, // The afk timeout
   //   graceTime: 5000, // the grace period before being kicked
@@ -36,7 +36,7 @@
     }
     const settings = {
       ...defaults,
-      ...room.afkConfig
+      ...room.AFKConfig
     }
     log('AFK plugin starting with', settings)
     room.AFK_PLUGIN = true

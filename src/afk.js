@@ -17,6 +17,7 @@
       throw 'afk already loaded'
     }
     const defaults = {
+      spectatorTeam: 0,
       timeout: 30000,
       graceTime: 5000
     }
@@ -53,7 +54,7 @@
     }
 
     chainFunction(room, 'onPlayerTeamChange', (player) => {
-      if (player.team == 0) {
+      if (player.team == settings.spectatorTeam) {
         clearPlayerTimeout(player.id)
       } else {
         resetPlayerTimeout(player.id)

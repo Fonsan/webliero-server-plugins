@@ -16,9 +16,13 @@
     if (room.AFK_PLUGIN) {
       throw 'afk already loaded'
     }
-    const settings = {
+    const defaults = {
       timeout: 30000,
       graceTime: 5000
+    }
+    const settings = {
+      ...defaults,
+      ...room.afkConfig
     }
     room.AFK_PLUGIN = true
     chainFunction(room, 'onPlayerJoin', (player) => {

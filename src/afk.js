@@ -26,7 +26,7 @@
   return new Promise((resolve, reject) => {
     const room = window.WLROOM
     if (room.AFK_PLUGIN) {
-      throw 'afk already loaded'
+      throw 'AFK_PLUGIN already loaded'
     }
     const defaults = {
       spectatorTeam: 0,
@@ -38,7 +38,7 @@
       ...defaults,
       ...room.AFKConfig
     }
-    log('AFK plugin starting with', settings)
+    log('AFK_PLUGIN loaded', settings)
     room.AFK_PLUGIN = true
     chainFunction(room, 'onPlayerJoin', (player) => {
       const motd = `AFK detection loaded, players are kicked after ${settings.timeout / 1000} seconds of inactivity`

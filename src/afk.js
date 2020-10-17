@@ -1,5 +1,5 @@
 (function () {
-  //
+  // AFK detection by https://github.com/Fonsan/webliero-server-plugins/
   const chainFunction = (object, attribute, func) => {
     const original = object[attribute]
     if (original) {

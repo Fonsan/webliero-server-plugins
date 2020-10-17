@@ -1,0 +1,19 @@
+{
+  "name": "webliero_server_plugins",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Fonsan/webliero_server_plugins.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fonsan/webliero_server_plugins/issues"
+  },
+  "homepage": "https://github.com/Fonsan/webliero_server_plugins#readme"
+}

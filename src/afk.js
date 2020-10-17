@@ -11,6 +11,10 @@
       object[attribute] = func
     }
   }
+  const log = (...arguments) => {
+    console.log(...arguments.map(x => JSON.stringify(x)))
+  }
+
   return new Promise((resolve, reject) => {
     const room = window.WLROOM
     if (room.AFK_PLUGIN) {
@@ -19,18 +23,21 @@
     const defaults = {
       spectatorTeam: 0,
       timeout: 30000,
-      graceTime: 5000
+      graceTime: 5000,
+      hotTimeout: 3000,
     }
     const settings = {
       ...defaults,
       ...room.afkConfig
     }
+    log('AFK plugin starting with', settings)
     room.AFK_PLUGIN = true
     chainFunction(room, 'onPlayerJoin', (player) => {
       const motd = `AFK detection loaded, players are kicked after ${settings.timeout / 1000} seconds of inactivity`
       room.sendAnnouncement(motd, player.id)
     })
     const playingPlayers = {}
+    const hotPlayers = {}
     const evictPlayer = (playerId) => {
       const message = `You will be evicted due too inactivity in ${settings.graceTime / 1000}, please move`
       room.sendAnnouncement(message, playerId)
@@ -62,7 +69,12 @@
     })
 
     chainFunction(room, 'onPlayerActivity', (player) => {
-      resetPlayerTimeout(player.id)
+      if (!hotPlayers[player.id]) {
+        hotPlayers[player.id] = setTimeout(() => {
+          delete hotPlayers[player.id]
+        }, settings.hotTimeout)
+        resetPlayerTimeout(player.id)
+      }
     })
 
     chainFunction(room, 'onPlayerLeave', (player) => {

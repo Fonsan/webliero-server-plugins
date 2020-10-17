@@ -88,5 +88,6 @@
     chainFunction(room, 'onPlayerLeave', (player) => {
       clearPlayerTimeout(player.id)
     })
+    resolve()
   })
 })()
